@@ -49,12 +49,15 @@ Class Cliargs {
      */
     public function help()
     {
-        $text = 'Help about the options and commands:' . PHP_EOL . PHP_EOL;
+        $text = 'Help about the options and commands:' . PHP_EOL . PHP_EOL;$i = 26;
         foreach ($this->option_list as $val) {
             $short = !empty($val['short']) ? '-' . $val['short'] : $val['short'];
             $long = !empty($val['long']) ? '--' . $val['long'] : $val['long'];
-            $comma = !empty($short)&&!empty($long) ? ',' : '';
-            $text .= sprintf("%6s%s %6s %26s\n", $short, $comma, $long, $val['desc']);
+            $comma = !empty($short)&&!empty($long) ? ',' : ' ';
+            
+            $text .= str_repeat(" ", 3) . (empty($short) ? str_repeat(" ", 2) : $short) . $comma;
+            $text .= ' ' . $long;
+            $text .= str_repeat(" ", 30 - strlen($long)) . $val['desc'] . PHP_EOL;
         }
         return $text . PHP_EOL;
     }
