@@ -6,9 +6,11 @@ Class Cliargs {
     
     private $option_list = [], $cliarg;
 
-    public function __construct()
+    public function __construct($usehelp = false)
     {
-        $this->add('help', 'h', 'help', 'this help', [$this, 'helpPrint']);
+        if($usehelp) {
+            $this->add('help', 'h', 'help', 'this help', [$this, 'helpPrint']);
+        }
     }
 
     /**
