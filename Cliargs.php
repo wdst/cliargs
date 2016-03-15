@@ -90,7 +90,7 @@ Class Cliargs {
             $key = $this->getArgsItem($k);
 
             if (!array_key_exists($this->option_list[$key]['name'], $result)) {
-                $result[$this->option_list[$key]['name']] = $this->option_list[$key]['callback']();
+                $result[$this->option_list[$key]['name']] = $this->option_list[$key]['callback']($v);
             }
         }
         return $result;
